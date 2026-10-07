@@ -1,14 +1,14 @@
 {
   "name": "MNV Studio",
   "short_name": "MNV",
-  "start_url": "/",
+  "start_url": "/website/",
   "display": "standalone",
   "background_color": "#3D3AE8",
   "theme_color": "#3D3AE8",
   "description": "Crafting apps with culture and care",
   "icons": [
     {
-      "src": "/assets/img/logo.svg",
+      "src": "/website/assets/img/logo.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

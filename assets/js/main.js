@@ -55,7 +55,7 @@
   }));
 
   /* ---------- Offline support ---------- */
-  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("/sw.js").catch(() => {});
+  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("/website/sw.js").catch(() => {});
 
   /* ---------- Easter egg: type "mnv" ---------- */
   window.mnvConfetti = () => confetti();

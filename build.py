@@ -4,6 +4,7 @@
 Edit SITE and APPS below, then run:  python3 build.py
 It writes every HTML page into this folder. No dependencies.
 """
+import re
 import json
 from html import escape
 from pathlib import Path
@@ -16,6 +17,7 @@ ROOT = Path(__file__).parent
 SITE = {
     "name": "MNV Studio",
     "url": "https://mnvstudio.example",          # your live domain, no trailing slash
+    "base": "/website",                          # path the site is served under ("" for a domain root)
     "tagline": "Crafting apps with culture and care",
     "founder": "Manav",
     "full_name": "Manav Sachdeva",
@@ -729,7 +731,12 @@ self.addEventListener("fetch", (e) => {
 
 
 # ---------------------------------------------------------------------------
+_LOCAL = re.compile(r"""([\"'(=])/(assets/|apps/|about/|contact/|privacy/|side-quests/|manifest\.webmanifest|sw\.js|404\.html|(?=[\"']))""")
+
+
 def write(rel, html):
+    if SITE["base"] and not rel.endswith((".xml", ".txt")):
+        html = _LOCAL.sub(lambda m: m[1] + SITE["base"] + "/" + m[2], html)
     f = ROOT / rel
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(html, encoding="utf-8")

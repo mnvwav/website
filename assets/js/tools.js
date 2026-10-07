@@ -339,7 +339,7 @@
     }
     act(root, "file").addEventListener("change", async (e) => { const f = e.target.files[0]; if (!f) return; act(root, "note").textContent = f.name; extract(await loadImage(f)); });
     act(root, "css").addEventListener("click", (e) => copy(":root {\n" + colors.map((c, i) => `  --color-${i + 1}: ${hex(c)};`).join("\n") + "\n}", e.target));
-    onView(root, () => loadImage("/assets/img/og.png").then(extract).catch(() => {}));
+    onView(root, () => loadImage("/website/assets/img/og.png").then(extract).catch(() => {}));
   })();
 
 
